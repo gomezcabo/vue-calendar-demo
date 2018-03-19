@@ -1,88 +1,72 @@
 <template>
   <div class="calendar">
-    <!-- <div class="data">
-      Current day: {{ currentDate }}<br>
-      Month: {{ month }}<br>
-      Year: {{ year }}<br>
-      Days in Month: {{ daysInMonth }}<br>
-      First Day of Month: {{ lastDayOfMonth }}<br>
-    </div> -->
 
+    <!-- PREV/NEXT actions & HEADER -->
     <div class="actions">
       <a @click="prevMonth">⇠</a>
       <div class="month">{{ monthName }} {{ year }}</div>
       <a @click="nextMonth">⇢</a>
     </div>
 
+    <!-- DAY NAMES HEADER -->
     <div v-for="day of weekDays" :key="'header' + day" class="day header">
       {{ day }}
     </div>
 
+    <!-- EXTRA DAYS BEFORE -->
     <template v-if="extraDaysBefore > 0">
-      <div v-for="day of extraDaysBefore" :key="'pre' + day" class="day empty">
-        <!-- empty -->
-      </div>
+      <div v-for="day of extraDaysBefore" :key="'pre' + day" class="day empty"><!-- empty --></div>
     </template>
-    <div v-for="day of daysInMonth" :key="day" class="day">
+
+    <!-- MONTH DAYS -->
+    <div
+      v-for="day of daysInMonth"
+      :key="day"
+      class="day"
+      :class="{ 'selected': isSelectedDay(day), 'has-events': dayHasEvents(day) }"
+      @click="selectDay(day)"
+    >
       {{ day }}
     </div>
 
-    <template v-if="extraDaysAfter > 0">
-      <div v-for="day of extraDaysAfter" :key="'post' + day" class="day empty">
-        <!-- empty -->
-      </div>
-    </template>
   </div>
 </template>
 
 <script>
 import moment from 'moment'
 
-const weekDays = ['LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB', 'DOM']
-const monthNames = [
-  'ENERO',
-  'FEBRERO',
-  'MARZO',
-  'ABRIL',
-  'MAYO',
-  'JUNIO',
-  'JULIO',
-  'AGOSTO',
-  'SEPTIEMBRE',
-  'OCTUBRE',
-  'NOVIEMBRE',
-  'DICIEMBRE'
-]
-
 const today = moment()
+const weekDays = ['LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB', 'DOM']
+const monthNames = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC']
 
 export default {
+  props: {
+    events: {
+      type: Array,
+      default: () => []
+    }
+  },
   data () {
     return {
       weekDays,
       today,
+      selectedDay: today,
       month: today.month(),
       year: today.year()
     }
   },
   computed: {
-    currentDate () {
+    // CURRENT MONTH
+    currentMonth () {
       return moment().year(this.year).month(this.month)
     },
+    // NUMBER OF DAYS IN MONTH
     daysInMonth () {
-      return this.currentDate.daysInMonth()
+      return this.currentMonth.daysInMonth()
     },
-    firstDayOfMonth () {
-      return this.currentDate.startOf('month')
-    },
-    lastDayOfMonth () {
-      return this.currentDate.endOf('month')
-    },
+    // EXTRA DAYS
     extraDaysBefore () {
-      return this.firstDayOfMonth.day() - 1
-    },
-    extraDaysAfter () {
-      return 7 - this.lastDayOfMonth.day()
+      return this.currentMonth.startOf('month').day() - 1
     },
     monthName () {
       return monthNames[this.month]
@@ -104,6 +88,18 @@ export default {
       } else {
         this.month++
       }
+    },
+    isSelectedDay (day) {
+      const currentDay = moment().year(this.year).month(this.month).date(day).format('YYYYMMDD')
+      return currentDay === this.selectedDay.format('YYYYMMDD')
+    },
+    dayHasEvents (day) {
+      const currentDay = moment().year(this.year).month(this.month).date(day).format('YYYYMMDD')
+      return this.events.filter(e => e.day === currentDay).length > 0
+    },
+    selectDay (day) {
+      this.selectedDay = moment().year(this.year).month(this.month).date(day)
+      this.$emit('selectedDay', this.selectedDay.format('YYYYMMDD'))
     }
   }
 }
@@ -126,32 +122,39 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 2px;
+    margin-bottom: 10px;
     font-weight: bold;
 
     .month {
       color: darkolivegreen;
-      font-size: 26px;
+      font-size: 22px;
     }
 
     a {
-      padding: 4px 12px;
+      margin: 10px 20px;
+      padding: 10px 20px;
+      border-radius: 4px;
       cursor: pointer;
-      background: #ddd;
+
+      &:hover {
+        background-color: #eeeeee;
+      }
     }
   }
 
   .day {
     width: calc(100% * (1/7) - 24px);
-    padding: 10px;
-    margin: 2px;
+    padding: 10px 6px;
+    border-radius: 3px;
+    margin: 6px 6px;
     position: relative;
     display: inline-block;
-    background-color: #eee;
+
     text-align: center;
     color: darkslategray;
 
     &.empty {
-      background: #fafafa;
+      background: white;
     }
 
     &.header {
@@ -159,7 +162,21 @@ export default {
       font-weight: bold;
     }
 
-    &:not(.empty):hover {
+    &.has-events {
+      font-weight: bold;
+      color: darkred;
+      background-color: rgba(lightcoral, 0.5);
+
+      &:before { content: '-' }
+      &:after  { content: '-' }
+    }
+
+    &.selected {
+      background-color: greenyellow;
+      cursor: default;
+    }
+
+    &:not(.empty):not(.header):not(.selected):hover {
       cursor: pointer;
       background-color: #ddd;
     }
