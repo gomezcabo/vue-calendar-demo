@@ -1,15 +1,17 @@
 <template>
   <div id="event-list">
-    <h1>Event List</h1>
+    <h1>Lista de Eventos</h1>
 
     <!-- CONDITIONAL RENDERING -->
     <template v-if="events.length">
       <div class="event" v-for="(event, index) of events" :key="index">
-        {{ event.description }}
+        <div class="description">
+          {{ event.description }}
+        </div>
       </div>
     </template>
     <div v-else>
-      No events for this day
+      No hay eventos programados para este día
     </div>
 
   </div>
@@ -32,6 +34,14 @@ export default {
     padding: 15px 20px;
     border: 1px solid #ddd;
     margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+
+    .delete {
+      cursor: pointer;
+      color: darkred;
+      font-weight: bold;
+    }
   }
 }
 

@@ -178,7 +178,7 @@ export default {
 
     &:not(.empty):not(.header):not(.selected):hover {
       cursor: pointer;
-      background-color: #ddd;
+      background-color: #eeeeee;
     }
   }
 }

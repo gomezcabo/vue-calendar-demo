@@ -12,9 +12,16 @@ export default {
 
 <style>
 
+html {
+  background-color: #eee;
+}
+
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
+  max-width: 1200px;
+  background: white;
+  box-shadow: 0px 2px 28px -8px rgba(0,0,0,0.75);
 }
 
 #app {

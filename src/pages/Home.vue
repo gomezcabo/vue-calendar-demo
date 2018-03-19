@@ -1,9 +1,9 @@
 <template>
   <div id="home">
     <div id="calendar-form">
-      <h1>Calendar</h1>
+      <h1>Calendario</h1>
 
-        <!-- CALENDAR COMPONENT -->
+        <!-- COMPONENTE CALENDARIO -->
         <calendar :events="events" @selectedDay="selectedDay = $event" />
         <!-- EVENT FORM COMPONENT -->
         <event-form @eventCreated="addEvent" />
@@ -60,10 +60,10 @@ $page-padding: 10px;
 #home {
   display: flex;
   padding: $page-padding;
+  height: calc(100vh - #{2 * $page-padding});
 
   #calendar-form {
     flex: 1;
-    height: calc(100vh - #{2 * $page-padding});
     margin: 20px;
 
     > *:first-of-type {
@@ -71,15 +71,10 @@ $page-padding: 10px;
     }
   }
 
-  #calendar {
-    margin-bottom: 30px;
-  }
-
   #events {
     display: block;
     flex: 1;
     margin: 20px;
-    height: 100%;
   }
 
   h1 {
