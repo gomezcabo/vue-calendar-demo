@@ -5,12 +5,16 @@
 
         <!-- COMPONENTE CALENDARIO -->
         <calendar :events="events" @selectedDay="selectedDay = $event" />
+
         <!-- EVENT FORM COMPONENT -->
         <event-form @eventCreated="addEvent" />
+
     </div>
     <div id="events">
+
       <!-- EVENT LIST COMPONENT -->
       <event-list :events="eventsSelected" />
+
     </div>
   </div>
 </template>
@@ -26,8 +30,9 @@ export default {
     return {
       // Initial events
       events: [
-        { day: '20180328', description: 'CanariasJS meet-up!!' },
+        { day: '20180328', description: 'CanariasJS meetup!!' },
         { day: '20180329', description: 'Vacaciones' },
+        { day: '20180401', description: 'Uno de abril' },
         { day: '20180423', description: 'Día del libro' }
       ],
       selectedDay: null

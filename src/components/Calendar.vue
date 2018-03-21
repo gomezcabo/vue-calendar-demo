@@ -3,9 +3,9 @@
 
     <!-- PREV/NEXT actions & HEADER -->
     <div class="actions">
-      <a @click="prevMonth">⇠</a>
+      <a @click="prevMonth"> ⇠ </a>
       <div class="month">{{ monthName }} {{ year }}</div>
-      <a @click="nextMonth">⇢</a>
+      <a @click="nextMonth"> ⇢ </a>
     </div>
 
     <!-- DAY NAMES HEADER -->
@@ -48,11 +48,14 @@ export default {
   },
   data () {
     return {
-      weekDays,
+      // CONSTANTS
       today,
-      selectedDay: today,
+      weekDays,
+
+      // CURRENT MONTH, YEAR AND SELECTED DAY
       month: today.month(),
-      year: today.year()
+      year: today.year(),
+      selectedDay: today
     }
   },
   computed: {
@@ -62,7 +65,7 @@ export default {
     },
     // NUMBER OF DAYS IN MONTH
     daysInMonth () {
-      return this.currentMonth.daysInMonth()
+      return this.currentMonth.daysInMonth()  // Moment.js
     },
     // EXTRA DAYS
     extraDaysBefore () {
@@ -115,6 +118,8 @@ export default {
   flex-wrap: wrap;
   width: 100%;
   border: 1px solid #eee;
+  box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.15);
+  padding-bottom: 10px;
 
   .actions {
     display: flex;
@@ -126,7 +131,7 @@ export default {
     font-weight: bold;
 
     .month {
-      color: darkolivegreen;
+      color: #de3800;
       font-size: 22px;
     }
 
@@ -164,16 +169,15 @@ export default {
 
     &.has-events {
       font-weight: bold;
-      color: darkred;
-      background-color: rgba(lightcoral, 0.5);
-
-      &:before { content: '-' }
-      &:after  { content: '-' }
+      color: darken(#de3800, 0%);
+      background-color: rgba(#de3800, 0.1);
+      text-decoration: underline;
     }
 
     &.selected {
-      background-color: greenyellow;
+      background-color: rgba(#3063CF, 0.9);
       cursor: default;
+      color: white;
     }
 
     &:not(.empty):not(.header):not(.selected):hover {

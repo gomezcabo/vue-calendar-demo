@@ -3,16 +3,16 @@
     <h1>Lista de Eventos</h1>
 
     <!-- CONDITIONAL RENDERING -->
-    <template v-if="events.length">
+    <div class="empty" v-if="!events.length">
+      No hay eventos programados para este día
+    </div>
+    <template v-else>
       <div class="event" v-for="(event, index) of events" :key="index">
         <div class="description">
           {{ event.description }}
         </div>
       </div>
     </template>
-    <div v-else>
-      No hay eventos programados para este día
-    </div>
 
   </div>
 </template>
@@ -42,6 +42,10 @@ export default {
       color: darkred;
       font-weight: bold;
     }
+  }
+
+  .empty {
+    padding-top: 20px;
   }
 }
 

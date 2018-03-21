@@ -13,7 +13,7 @@ export default {
 <style>
 
 html {
-  background-color: #eee;
+  background-color: #555;
 }
 
 body {
@@ -21,13 +21,17 @@ body {
   padding: 0;
   max-width: 1200px;
   background: white;
-  box-shadow: 0px 2px 28px -8px rgba(0,0,0,0.75);
+  box-shadow: 0px 2px 28px -8px rgba(0,0,0,0.95);
 }
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+#app, input, button {
+  font-family: 'Roboto Mono', 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+h1 {
+  color: #de3800;
 }
 </style>

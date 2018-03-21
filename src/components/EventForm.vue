@@ -34,15 +34,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
-  // display: flex;
-  // flex-direction: column;
-}
 
 input, button {
   box-sizing: border-box;
   padding: 4px 10px;
   height: 32px;
 }
-</style>
 
+button {
+  width: 100px;
+}
+
+input {
+  width: calc(100% - 110px);
+}
+</style>
