@@ -11,7 +11,7 @@
     />
 
     <!-- EVENT BINDING -->
-    <button @click="add">Añadir</button>
+    <button @click="add">AÑADIR</button>
   </div>
 </template>
 
@@ -39,10 +39,20 @@ input, button {
   box-sizing: border-box;
   padding: 4px 10px;
   height: 32px;
+  border: 1px solid #777
 }
 
 button {
   width: 100px;
+  color: white;
+  background: #de3800;
+  border: 1px solid transparent;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 input {

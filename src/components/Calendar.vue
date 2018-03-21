@@ -65,7 +65,7 @@ export default {
     },
     // NUMBER OF DAYS IN MONTH
     daysInMonth () {
-      return this.currentMonth.daysInMonth()  // Moment.js
+      return this.currentMonth.daysInMonth()
     },
     // EXTRA DAYS
     extraDaysBefore () {
