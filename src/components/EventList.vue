@@ -1,6 +1,6 @@
 <template>
   <div id="event-list">
-    <h1>Lista de Eventos</h1>
+    <h1>Eventos {{ day }}</h1>
 
     <!-- CONDITIONAL RENDERING -->
     <div class="empty" v-if="!events.length">
@@ -18,11 +18,22 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   props: {
     events: {
       type: Array,
       default: () => []
+    },
+    selectedDay: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    day () {
+      return moment(this.selectedDay).format('DD-MM-YYYY')
     }
   }
 }

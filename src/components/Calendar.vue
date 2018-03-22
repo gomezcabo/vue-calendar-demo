@@ -15,7 +15,9 @@
 
     <!-- EXTRA DAYS BEFORE -->
     <template v-if="extraDaysBefore > 0">
-      <div v-for="day of extraDaysBefore" :key="'pre' + day" class="day empty"><!-- empty --></div>
+      <div v-for="day of extraDaysBefore" :key="'pre' + day" class="day empty">
+        <!-- empty -->
+      </div>
     </template>
 
     <!-- MONTH DAYS -->

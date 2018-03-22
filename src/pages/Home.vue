@@ -13,16 +13,19 @@
     <div id="events">
 
       <!-- EVENT LIST COMPONENT -->
-      <event-list :events="eventsSelected" />
+      <event-list :events="eventsSelected" :selectedDay="selectedDay" />
 
     </div>
   </div>
 </template>
 
 <script>
+import moment from 'moment'
 import Calendar from '@/components/Calendar'
 import EventList from '@/components/EventList'
 import EventForm from '@/components/EventForm'
+
+const today = moment().format('YYYYMMDD')
 
 export default {
   name: 'Home',
@@ -35,7 +38,7 @@ export default {
         { day: '20180401', description: 'Uno de abril' },
         { day: '20180423', description: 'Día del libro' }
       ],
-      selectedDay: null
+      selectedDay: today
     }
   },
   computed: {
