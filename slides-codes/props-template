@@ -1,0 +1,28 @@
+<div id="app">
+  <input
+    type="text"
+    v-model="newTodo"
+    @keyup.enter="addTodo"
+  />
+  <ul>
+    <li v-for="todo in todos">
+      <todo-item :todo="todo"/> <!-- componente -->
+    </li>
+  </ul>
+</div>
+
+Vue.component('todo-item', {
+  props: { // <--- Abributos recibido del padre
+    todo: {
+      type: String,
+      required: true,
+    }
+  },
+  template: '<span>{{ todo }}</span>', // <--- Plantilla
+})
+
+new Vue({
+  el: '#app',   // <--- Punto de montaje
+  data: { ... },
+  methods: { ... }
+})

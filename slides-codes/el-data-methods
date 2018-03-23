@@ -1,0 +1,30 @@
+<div id="app">
+  <input
+    type="text"
+    v-model="newTodo"
+    @keyup.enter="addTodo"
+  />
+  <ul>
+    <li v-for="todo in todos">
+      {{ todo }}
+      <span @click="removeTodo($index)"> x </span>
+    </li>
+  </ul>
+</div>
+
+new Vue({
+  el: '#app',   // <--- Punto de montaje
+  data: {       // <--- Modelo de datos
+    todos: [],
+    newTodo: ''
+  },
+  methods: {    // <--- Métodos del modelo
+    removeTodo: function (index) {
+      this.todos.splice(index, 1)
+    },
+    addTodo: function () {
+      this.todos.push(this.newTodo)
+      this.newTodo = ''
+    }
+  }
+})

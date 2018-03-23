@@ -1,0 +1,30 @@
+<div id="app">
+  <input
+    type="text"
+    v-model="newTodo"
+    @keyup.enter="addTodo"
+  />
+  <ul>
+    <li v-for="todo in todos">
+      {{ todo }}
+      <span @click="removeTodo($index)"> x </span>
+    </li>
+  </ul>
+</div>
+
+new Vue({
+  el: '#app',
+  data: {
+    todos: [],
+    newTodo: ''
+  },
+  methods: {
+    removeTodo: function (index) { /* ... */ },
+    addTodo: function () { /* ... */ }
+  },
+  watch: { // <--- Watchers
+    todos: function (newVa, oldVal) {
+      console.log('Cambio de %s a %s', old, new);
+    }
+  }
+})
