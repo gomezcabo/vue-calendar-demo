@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1>Nuevo Evento</h1>
+    <h1>Nueva Tarea</h1>
 
     <!-- TWO WAY DATA BINDING -->
     <input
       type="text"
-      placeholder="Descripción del evento..."
-      v-model="eventDescription"
+      placeholder="Descripción de la tarea..."
+      v-model="taskDescription"
       @keyup.enter="add"
     />
 
@@ -19,14 +19,14 @@
 export default {
   data () {
     return {
-      eventDescription: ''
+      taskDescription: ''
     }
   },
   methods: {
     add () {
-      if (this.eventDescription.trim().length > 0) {
-        this.$emit('eventCreated', this.eventDescription)
-        this.eventDescription = ''
+      if (this.taskDescription.trim().length > 0) {
+        this.$emit('taskCreated', this.taskDescription)
+        this.taskDescription = ''
       }
     }
   }

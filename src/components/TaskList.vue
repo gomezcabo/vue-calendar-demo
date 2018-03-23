@@ -1,15 +1,15 @@
 <template>
-  <div id="event-list">
-    <h1>Eventos {{ day }}</h1>
+  <div id="task-list">
+    <h1>Tareas</h1>
 
     <!-- CONDITIONAL RENDERING -->
-    <div class="empty" v-if="!events.length">
-      No hay eventos programados para este día
+    <div class="empty" v-if="!tasks.length">
+      No hay tareas el {{ day }}
     </div>
     <template v-else>
-      <div class="event" v-for="(event, index) of events" :key="index">
+      <div class="task" v-for="(task, index) of tasks" :key="index">
         <div class="description">
-          {{ event.description }}
+          {{ task.description }}
         </div>
       </div>
     </template>
@@ -22,7 +22,7 @@ import moment from 'moment'
 
 export default {
   props: {
-    events: {
+    tasks: {
       type: Array,
       default: () => []
     },
@@ -40,8 +40,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#event-list {
-  .event {
+#task-list {
+  .task {
     padding: 15px 20px;
     border: 1px solid #ddd;
     margin: 8px 0;

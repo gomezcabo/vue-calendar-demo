@@ -4,16 +4,16 @@
       <h1>Calendario</h1>
 
         <!-- COMPONENTE CALENDARIO -->
-        <calendar :events="events" @selectedDay="selectedDay = $event" />
+        <calendar :tasks="tasks" @selectedDay="selectedDay = $event" />
 
-        <!-- EVENT FORM COMPONENT -->
-        <event-form @eventCreated="addEvent" />
+        <!-- TASK FORM COMPONENT -->
+        <task-form @taskCreated="addTask" />
 
     </div>
-    <div id="events">
+    <div id="tasks">
 
-      <!-- EVENT LIST COMPONENT -->
-      <event-list :events="eventsSelected" :selectedDay="selectedDay" />
+      <!-- TASK LIST COMPONENT -->
+      <task-list :tasks="tasksSelected" :selectedDay="selectedDay" />
 
     </div>
   </div>
@@ -22,8 +22,8 @@
 <script>
 import moment from 'moment'
 import Calendar from '@/components/Calendar'
-import EventList from '@/components/EventList'
-import EventForm from '@/components/EventForm'
+import TaskList from '@/components/TaskList'
+import TaskForm from '@/components/TaskForm'
 
 const today = moment().format('YYYYMMDD')
 
@@ -31,8 +31,8 @@ export default {
   name: 'Home',
   data () {
     return {
-      // Initial events
-      events: [
+      // INITIAL TASKS
+      tasks: [
         { day: '20180328', description: 'CanariasJS meetup!!' },
         { day: '20180329', description: 'Vacaciones' },
         { day: '20180401', description: 'Uno de abril' },
@@ -42,13 +42,13 @@ export default {
     }
   },
   computed: {
-    eventsSelected () {
-      return this.events.filter(e => e.day === this.selectedDay)
+    tasksSelected () {
+      return this.tasks.filter(e => e.day === this.selectedDay)
     }
   },
   methods: {
-    addEvent (description) {
-      this.events.push({
+    addTask (description) {
+      this.tasks.push({
         day: this.selectedDay,
         description
       })
@@ -56,8 +56,8 @@ export default {
   },
   components: {
     Calendar,
-    EventList,
-    EventForm
+    TaskList,
+    TaskForm
   }
 }
 </script>
@@ -79,7 +79,7 @@ $page-padding: 10px;
     }
   }
 
-  #events {
+  #tasks {
     display: block;
     flex: 1;
     margin: 20px;

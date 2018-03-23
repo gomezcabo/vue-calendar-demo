@@ -25,7 +25,7 @@
       v-for="day of daysInMonth"
       :key="day"
       class="day"
-      :class="{ 'selected': isSelectedDay(day), 'has-events': dayHasEvents(day) }"
+      :class="{ 'selected': isSelectedDay(day), 'has-tasks': dayHasTasks(day) }"
       @click="selectDay(day)"
     >
       {{ day }}
@@ -43,9 +43,8 @@ const monthNames = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP
 
 export default {
   props: {
-    events: {
-      type: Array,
-      default: () => []
+    tasks: {
+      type: Array
     }
   },
   data () {
@@ -98,9 +97,9 @@ export default {
       const currentDay = moment().year(this.year).month(this.month).date(day).format('YYYYMMDD')
       return currentDay === this.selectedDay.format('YYYYMMDD')
     },
-    dayHasEvents (day) {
+    dayHasTasks (day) {
       const currentDay = moment().year(this.year).month(this.month).date(day).format('YYYYMMDD')
-      return this.events.filter(e => e.day === currentDay).length > 0
+      return this.tasks.filter(e => e.day === currentDay).length > 0
     },
     selectDay (day) {
       this.selectedDay = moment().year(this.year).month(this.month).date(day)
@@ -169,7 +168,7 @@ export default {
       font-weight: bold;
     }
 
-    &.has-events {
+    &.has-tasks {
       font-weight: bold;
       color: darken(#de3800, 0%);
       background-color: rgba(#de3800, 0.1);
