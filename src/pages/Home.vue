@@ -13,7 +13,7 @@
     <div id="tasks">
 
       <!-- TASK LIST COMPONENT -->
-      <task-list :tasks="tasksSelected" :selectedDay="selectedDay" />
+      <task-list :tasks="tasksSelected" @deletedTask="deleteTask" />
 
     </div>
   </div>
@@ -33,11 +33,12 @@ export default {
     return {
       // INITIAL TASKS
       tasks: [
-        { day: '20180328', description: 'CanariasJS meetup!!' },
-        { day: '20180329', description: 'Vacaciones' },
-        { day: '20180401', description: 'Uno de abril' },
-        { day: '20180423', description: 'Día del libro' }
+        { id: 1, day: '20180328', description: 'CanariasJS meetup!!' },
+        { id: 2, day: '20180329', description: 'Vacaciones' },
+        { id: 3, day: '20180401', description: 'Uno de abril' },
+        { id: 4, day: '20180423', description: 'Día del libro' }
       ],
+      currentId: 5,
       selectedDay: today
     }
   },
@@ -49,9 +50,13 @@ export default {
   methods: {
     addTask (description) {
       this.tasks.push({
+        id: this.currentId++,
         day: this.selectedDay,
         description
       })
+    },
+    deleteTask (taskId) {
+      this.tasks = this.tasks.filter(task => task.id !== taskId)
     }
   },
   components: {

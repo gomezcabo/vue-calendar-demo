@@ -1,0 +1,11 @@
+<!-- Stop propagation -->
+<a @click.stop="doThis"></a>
+
+<!-- Prevent default -->
+<form @submit.prevent="onSubmit"></form>
+
+<!-- Se pueden encadenar modificadores -->
+<a @click.stop.prevent="doThat"></a>
+
+<!-- Pueden filtrarse -->
+<input @keyup.enter="addTodo">

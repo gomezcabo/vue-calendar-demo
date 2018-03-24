@@ -1,0 +1,19 @@
+<div id="app">
+  <input type="text" v-model="newTodo" @keyup.enter="addTodo" />
+
+  <span v-if="count === 0">     <!-- IF -->
+    There are no todos
+  </span>
+  <span v-elseif="count === 1"> <!-- ELSEIF -->
+    There are one todo
+  </span>
+  <span v-else>                 <!-- ELSE -->
+    There are {{ numberOfTodos }} todos
+  </span>
+
+  <ul>
+    <li v-for="todo in todos">
+      {{ todo }}
+    </li>
+  </ul>
+</div>

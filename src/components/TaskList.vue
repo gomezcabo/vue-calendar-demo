@@ -4,13 +4,14 @@
 
     <!-- CONDITIONAL RENDERING -->
     <div class="empty" v-if="!tasks.length">
-      No hay tareas el {{ day }}
+      No hay tareas para este día
     </div>
     <template v-else>
       <div class="task" v-for="(task, index) of tasks" :key="index">
         <div class="description">
           {{ task.description }}
         </div>
+        <div class="delete" @click="$emit('deletedTask', task.id)">Eliminar</div>
       </div>
     </template>
 
@@ -18,22 +19,11 @@
 </template>
 
 <script>
-import moment from 'moment'
-
 export default {
   props: {
     tasks: {
       type: Array,
       default: () => []
-    },
-    selectedDay: {
-      type: String,
-      default: ''
-    }
-  },
-  computed: {
-    day () {
-      return moment(this.selectedDay).format('DD-MM-YYYY')
     }
   }
 }

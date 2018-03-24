@@ -12,7 +12,7 @@
 </div>
 
 Vue.component('todo-item', {
-  props: { // <--- Abributos recibido del padre
+  props: { // <--- Abributos recibidos del padre
     todo: {
       type: String,
       required: true,
