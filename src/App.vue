@@ -95,7 +95,6 @@ $page-padding: 10px;
   }
 }
 
-
 html {
   background-color: #555;
 }
