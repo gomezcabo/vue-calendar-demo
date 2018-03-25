@@ -4,7 +4,7 @@
   <span v-if="count === 0">     <!-- IF -->
     There are no todos
   </span>
-  <span v-elseif="count === 1"> <!-- ELSEIF -->
+  <span v-else-if="count === 1"> <!-- ELSEIF -->
     There are one todo
   </span>
   <span v-else>                 <!-- ELSE -->
