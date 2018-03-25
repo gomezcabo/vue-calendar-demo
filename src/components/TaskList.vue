@@ -7,7 +7,7 @@
       No hay tareas para este día
     </div>
     <template v-else>
-      <div class="task" v-for="(task, index) of tasks" :key="index">
+      <div class="task" v-for="task of tasks" :key="task.id">
         <div class="description">
           {{ task.description }}
         </div>
