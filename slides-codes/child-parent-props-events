@@ -1,0 +1,29 @@
+<parent-component>
+  <child-component
+    :propName="someData"
+    @eventName="doSomething"
+  />
+</parent-component>
+
+Vue.component({
+    data: function () {
+      return {
+        someData: 'Hello World'
+      }
+    },
+    methods: {
+        doSomething: function (value) { /* ... */ }
+    },
+    ...
+})
+
+
+Vue.component({
+  props: ['propName'],
+  methods: {
+    sendDataToParent: function (value) {
+      this.$emit('eventName', value)
+    }
+  },
+  ...
+})
