@@ -36,10 +36,10 @@
 
 <script>
 import moment from 'moment'
+import weekDays from '@/constants/weekDays'
+import monthNames from '@/constants/monthNames'
 
 const today = moment()
-const weekDays = ['LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB', 'DOM']
-const monthNames = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC']
 
 export default {
   props: {
@@ -52,6 +52,7 @@ export default {
       // CONSTANTS
       today,
       weekDays,
+      monthNames,
 
       // CURRENT MONTH, YEAR AND SELECTED DAY
       month: today.month(),
@@ -73,7 +74,7 @@ export default {
       return this.currentMonth.startOf('month').day() - 1
     },
     monthName () {
-      return monthNames[this.month]
+      return this.monthNames[this.month]
     }
   },
   methods: {

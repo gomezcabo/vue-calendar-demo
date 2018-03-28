@@ -25,20 +25,20 @@ import Calendar from '@/components/Calendar'
 import TaskList from '@/components/TaskList'
 import TaskForm from '@/components/TaskForm'
 
+let currentId = 5
 const today = moment().format('YYYYMMDD')
 
 export default {
-  name: 'Home',
+  name: 'App',
   data () {
     return {
       // INITIAL TASKS
       tasks: [
         { id: 1, day: '20180328', description: 'CanariasJS meetup!!' },
         { id: 2, day: '20180329', description: 'Vacaciones' },
-        { id: 3, day: '20180401', description: 'Uno de abril' },
-        { id: 4, day: '20180423', description: 'Día del libro' }
+        { id: 3, day: '20180401', description: 'Tarea del 1 de abril' },
+        { id: 4, day: '20180423', description: 'Día del libro: comprar un libro' }
       ],
-      currentId: 5,
       selectedDay: today
     }
   },
@@ -50,7 +50,7 @@ export default {
   methods: {
     addTask (description) {
       this.tasks.push({
-        id: this.currentId++,
+        id: currentId++,
         day: this.selectedDay,
         description
       })

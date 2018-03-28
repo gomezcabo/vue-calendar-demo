@@ -11,7 +11,9 @@
         <div class="description">
           {{ task.description }}
         </div>
-        <div class="delete" @click="$emit('deletedTask', task.id)">Eliminar</div>
+        <div class="delete" @click="$emit('deletedTask', task.id)">
+          Eliminar
+        </div>
       </div>
     </template>
 
