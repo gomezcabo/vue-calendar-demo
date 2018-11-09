@@ -32,7 +32,9 @@ const initialTasks = [
   { id: currentId++, day: '20181107', description: 'Tarea 2' },
   { id: currentId++, day: '20181107', description: 'Tarea 3' },
   { id: currentId++, day: '20181110', description: 'JSDay - Día 1' },
-  { id: currentId++, day: '20181111', description: 'JSDay - Día 2' }
+  { id: currentId++, day: '20181111', description: 'JSDay - Día 2' },
+  { id: currentId++, day: '20181111', description: 'Tarea A' },
+  { id: currentId++, day: '20181111', description: 'Tarea B' }
 ]
 
 const today = moment().format('YYYYMMDD')

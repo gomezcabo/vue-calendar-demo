@@ -3,7 +3,7 @@
     <h1>Tareas</h1>
 
     <!-- CONDITIONAL RENDERING -->
-    <div class="empty" v-if="!tasks.length">
+    <div class="empty" v-if="tasks.length === 0">
       No hay tareas para este día
     </div>
     <template v-else>

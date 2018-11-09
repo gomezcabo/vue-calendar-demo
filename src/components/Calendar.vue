@@ -97,7 +97,7 @@ export default {
     },
     dayHasTasks (day) {
       const currentDay = moment().year(this.year).month(this.month).date(day).format('YYYYMMDD')
-      return !!this.tasks.find(e => e.day === currentDay)
+      return this.tasks.find(e => e.day === currentDay) !== undefined
     },
     selectDay (day) {
       this.selectedDay = moment().year(this.year).month(this.month).date(day)
@@ -153,12 +153,15 @@ export default {
     margin: 6px 6px;
     position: relative;
     display: inline-block;
+    cursor: pointer;
 
     text-align: center;
     color: darkslategray;
+      cursor: pointer;
 
     &.empty {
       background: white;
+      cursor: default;
     }
 
     &.header {
@@ -168,19 +171,17 @@ export default {
 
     &.has-tasks {
       font-weight: bold;
-      color: darken(#de3800, 0%);
+      color:#de3800;
       background-color: rgba(#de3800, 0.1);
       text-decoration: underline;
     }
 
     &.selected {
-      background-color: rgba(#3063CF, 0.9);
-      cursor: default;
+      background-color: #3063CF;
       color: white;
     }
 
     &:not(.empty):not(.header):not(.selected):hover {
-      cursor: pointer;
       background-color: #eeeeee;
     }
   }
