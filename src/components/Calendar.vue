@@ -36,8 +36,6 @@
 
 <script>
 import moment from 'moment'
-import weekDays from '@/constants/weekDays'
-import monthNames from '@/constants/monthNames'
 
 const today = moment()
 
@@ -52,14 +50,13 @@ export default {
       // CURRENT MONTH, YEAR AND SELECTED DAY
       month: today.month(),
       year: today.year(),
-      selectedDay: null
+      selectedDay: today
     }
   },
   computed: {
     // CONSTANTS
-    today: () => today,
-    weekDays: () => weekDays,
-    monthNames: () => monthNames,
+    weekDays: () => ['LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB', 'DOM'],
+    monthNames: () => ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'],
 
     // CURRENT MONTH
     currentMonth () {
