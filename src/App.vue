@@ -25,20 +25,23 @@ import Calendar from '@/components/Calendar'
 import TaskList from '@/components/TaskList'
 import TaskForm from '@/components/TaskForm'
 
-let currentId = 5
+let currentId = 0
+const initialTasks = [
+  { id: currentId++, day: '20181101', description: 'Entregar documentación a Batman' },
+  { id: currentId++, day: '20181107', description: 'Tarea 1' },
+  { id: currentId++, day: '20181107', description: 'Tarea 2' },
+  { id: currentId++, day: '20181107', description: 'Tarea 3' },
+  { id: currentId++, day: '20181110', description: 'JSDay - Día 1' },
+  { id: currentId++, day: '20181111', description: 'JSDay - Día 2' }
+]
+
 const today = moment().format('YYYYMMDD')
 
 export default {
   name: 'App',
   data () {
     return {
-      // INITIAL TASKS
-      tasks: [
-        { id: 1, day: '20180328', description: 'CanariasJS meetup!!' },
-        { id: 2, day: '20180329', description: 'Vacaciones' },
-        { id: 3, day: '20180401', description: 'Tarea del 1 de abril' },
-        { id: 4, day: '20180423', description: 'Día del libro: comprar un libro' }
-      ],
+      tasks: initialTasks,
       selectedDay: today
     }
   },

@@ -49,18 +49,18 @@ export default {
   },
   data () {
     return {
-      // CONSTANTS
-      today,
-      weekDays,
-      monthNames,
-
       // CURRENT MONTH, YEAR AND SELECTED DAY
       month: today.month(),
       year: today.year(),
-      selectedDay: today
+      selectedDay: null
     }
   },
   computed: {
+    // CONSTANTS
+    today: () => today,
+    weekDays: () => weekDays,
+    monthNames: () => monthNames,
+
     // CURRENT MONTH
     currentMonth () {
       return moment().year(this.year).month(this.month)
@@ -96,11 +96,11 @@ export default {
     },
     isSelectedDay (day) {
       const currentDay = moment().year(this.year).month(this.month).date(day).format('YYYYMMDD')
-      return currentDay === this.selectedDay.format('YYYYMMDD')
+      return this.selectedDay && currentDay === this.selectedDay.format('YYYYMMDD')
     },
     dayHasTasks (day) {
       const currentDay = moment().year(this.year).month(this.month).date(day).format('YYYYMMDD')
-      return this.tasks.filter(e => e.day === currentDay).length > 0
+      return !!this.tasks.find(e => e.day === currentDay)
     },
     selectDay (day) {
       this.selectedDay = moment().year(this.year).month(this.month).date(day)
