@@ -79,19 +79,19 @@ export default {
   },
   methods: {
     prevMonth () {
-      if (this.month === 0) {
+      if (this.month !== 0) {
+        this.month--
+      } else {
         this.month = 11
         this.year--
-      } else {
-        this.month--
       }
     },
     nextMonth () {
-      if (this.month === 11) {
+      if (this.month !== 11) {
+        this.month++
+      } else {
         this.month = 0
         this.year++
-      } else {
-        this.month++
       }
     },
     isSelectedDay (day) {
