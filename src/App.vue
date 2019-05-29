@@ -72,32 +72,30 @@ export default {
 }
 </script>
 
-<style lang="scss">
-$page-padding: 10px;
-
+<style>
 #home {
   display: flex;
-  padding: $page-padding;
-  height: calc(100vh - #{2 * $page-padding});
+  padding: 10px;
+  height: calc(100vh - 20px);
+}
 
-  #calendar-form {
-    flex: 1;
-    margin: 20px;
+#home #calendar-form {
+  flex: 1;
+  margin: 20px;
+}
 
-    > *:first-of-type {
-      margin-bottom: 30px;
-    }
-  }
+#home #calendar-form  > *:first-of-type {
+  margin-bottom: 30px;
+}
 
-  #tasks {
-    display: block;
-    flex: 1;
-    margin: 20px;
-  }
+#home #tasks {
+  display: block;
+  flex: 1;
+  margin: 20px;
+}
 
-  h1 {
-    margin: 0 0 30px 0;
-  }
+#home h1 {
+  margin: 0 0 30px 0;
 }
 
 html {

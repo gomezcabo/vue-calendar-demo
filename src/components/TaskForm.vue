@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
 input, button {
   box-sizing: border-box;
@@ -49,10 +49,10 @@ button {
   border: 1px solid transparent;
   font-weight: bold;
   cursor: pointer;
+}
 
-  &:focus {
-    outline: 0;
-  }
+button:focus {
+  outline: 0;
 }
 
 input {

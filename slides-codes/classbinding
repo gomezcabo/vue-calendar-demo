@@ -1,5 +1,0 @@
-<div
-  :class="{ 'selected': isSelected, 'text-danger': hasError }"
->
-   ...
-</div>

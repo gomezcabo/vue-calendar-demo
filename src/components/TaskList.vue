@@ -31,25 +31,23 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-#task-list {
-  .task {
-    padding: 15px 20px;
-    border: 1px solid #ddd;
-    margin: 8px 0;
-    display: flex;
-    justify-content: space-between;
+<style scoped>
+.task {
+  padding: 15px 20px;
+  border: 1px solid #ddd;
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+}
 
-    .delete {
-      cursor: pointer;
-      color: darkred;
-      font-weight: bold;
-    }
-  }
+.task .delete {
+  cursor: pointer;
+  color: darkred;
+  font-weight: bold;
+}
 
-  .empty {
-    padding-top: 20px;
-  }
+.empty {
+  padding-top: 20px;
 }
 
 h1 {
